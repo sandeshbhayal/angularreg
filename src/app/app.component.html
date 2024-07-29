@@ -1,0 +1,133 @@
+<div class="card">
+    <h4 class="card-header">User Registration</h4>
+    <div class='card-body'>
+        <ul ngbNav #nav="ngbNav" class="nav-tabs" activeId='view'>
+            <li ngbNavItem="add">
+                <a ngbNavLink>Add User</a>
+                <ng-template ngbNavContent>
+                    <form [formGroup]="addFrom" (ngSubmit)="registration()" style="padding-top: 18 px;">
+                        <div class="row mb-3">
+                            <div class="form-group col-2">
+                                <label>Title</label>
+                                <select class="form-control" formControlName="title" [ngClass]="{'is-invalid' : submitted && addFrom.controls['title'].errors}">
+                                    <option value="">Please select</option>
+                                    <option value="Mr.">Mr.</option>
+                                    <option value="Mrs.">Mrs.</option>
+                                    <option value="Miss">Miss</option>
+                                    <option value="Master">Master</option>
+                                </select>
+
+                                <div class="invalid-feedback" *ngIf="submitted && addFrom.controls['title'].errors">
+                                    <div *ngIf="addFrom.controls['title'].errors['required']">
+                                        Title is required
+                                    </div>    
+                                </div>
+                            </div>
+                            <div class="form-group col-4">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" formControlName='firstName'  [ngClass]="{'is-invalid' : submitted && addFrom.controls['firstName'].errors}"> 
+                                <div class="invalid-feedback" *ngIf="submitted && addFrom.controls['firstName'].errors">
+                                    <div *ngIf="addFrom.controls['firstName'].errors['required']">
+                                        Title is required
+                                    </div>    
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" formControlName='lastName'  [ngClass]="{'is-invalid' : submitted && addFrom.controls['lastName'].errors}"> 
+                                <div class="invalid-feedback" *ngIf="submitted && addFrom.controls['lastName'].errors">
+                                    <div *ngIf="addFrom.controls['lastName'].errors['required']">
+                                        Title is required
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="form-group col-6">
+                                <label>Email</label>
+                                <input type="text" class="form-control" formControlName='email' [ngClass]="{'is-invalid' : submitted && addFrom.controls['email'].errors}"> 
+                                <div class="invalid-feedback" *ngIf="submitted && addFrom.controls['email'].errors">
+                                    <div *ngIf="addFrom.controls['email'].errors['required']">
+                                        Title is required
+                                    </div>    
+                                </div>
+                            </div>   
+                            <div class="form-group col-6">
+                                <label>DOB</label>
+                                <input type="date" class="form-control" formControlName='dob' [ngClass]="{'is-invalid' : submitted && addFrom.controls['dob'].errors}"> 
+                                <div class="invalid-feedback" *ngIf="submitted && addFrom.controls['dob'].errors">
+                                    <div *ngIf="addFrom.controls['dob'].errors['required']">
+                                        Title is required
+                                    </div>    
+                                </div>
+                            </div>    
+                        </div>    
+
+
+                        <div class="row mb-3">
+                            <div class="form-group col-6">
+                                <label>Password</label>
+                                <input type="password" class="form-control" formControlName='password'  [ngClass]="{'is-invalid' : submitted && addFrom.controls['password'].errors}"> 
+                                <div class="invalid-feedback" *ngIf="submitted && addFrom.controls['password'].errors">
+                                    <div *ngIf="addFrom.controls['password'].errors['required']">
+                                        Title is required
+                                    </div>    
+                                </div>
+                            </div>   
+                            <div class="form-group col-6">
+                                <label>Confrim Password</label>
+                                <input type="password" class="form-control" formControlName='confirmpassword'  [ngClass]="{'is-invalid' : submitted && addFrom.controls['confirmpassword'].errors}"> 
+                                <div class="invalid-feedback" *ngIf="submitted && addFrom.controls['confirmpassword'].errors">
+                                    <div *ngIf="addFrom.controls['confirmpassword'].errors['required']">
+                                        Title is required
+                                    </div>    
+                                </div>
+                            </div>    
+                        </div>    
+                        <div class="row mb-3">
+                            <div class="form-group col-6"> 
+                                <input type="checkbox" formControlName='acceptTerms'  [ngClass]="{'is-invalid' : submitted && addFrom.controls['acceptTerms'].errors}"> 
+                                <label for="acceptTerms" class="form-check-label me-5">Accept Terms & Conditions</label>
+                                <div class="invalid-feedback" *ngIf="submitted && addFrom.controls['acceptTerms'].errors">
+                                    <div *ngIf="addFrom.controls['acceptTerms'].errors['required']">
+                                        Title is required
+                                    </div>    
+                                </div>
+                            </div> 
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="form-group col-12 center">
+                                <button type="submit" class="btn btn-primary me-2">Save</button> 
+                                <button type="button" class="btn btn-primary" (click)="resetdata()">Cancel</button>
+                            </div>
+                        </div>        
+                    </form>
+                </ng-template>
+            </li>
+            <li ngbNavItem="view">
+                <a ngbNavLink>User List</a>
+                <ng-template ngbNavContent>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Title1</th>
+                                    <th>Frist Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>DOB</th>
+                                    <th>Action</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </ng-template>
+            </li>
+
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+    </div>
+</div>
