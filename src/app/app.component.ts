@@ -41,6 +41,8 @@ export class AppComponent implements OnInit {
         })
     }
 
+    
+
     registration(){
         this.submitted = true ; 
         if(this.addFrom.invalid){
@@ -57,8 +59,8 @@ export class AppComponent implements OnInit {
 
     getUsers(){
         this._Userservice.getAllUsers().subscribe((res : users[]) => {
-            //debugger ; 
-            //console.log(res) ; 
+            debugger ; 
+            console.log(res) ; 
             this.users = res ; 
         });
     }
