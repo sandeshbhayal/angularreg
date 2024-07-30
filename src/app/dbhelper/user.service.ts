@@ -28,8 +28,8 @@ export class UserService {
     return this._httpClient.post(`${this.API_BASE_PATH}users/${user.id}` , user)
   }
 
-  deleteUsers(userId : users){
-    return this._httpClient.delete(`${this.API_BASE_PATH}users/${userId}`)
+  deleteUsers(id : number){
+    return this._httpClient.delete(`${this.API_BASE_PATH}users/${id}`)
   }
 
 }
